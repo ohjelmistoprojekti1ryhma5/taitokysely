@@ -13,7 +13,7 @@ public class TaitokyselyApplication {
 		System.out.println("Hello world! kakkoseen");
 
 		System.out.println("Hello world!");
-		System.out.println("Lauri"); //ei poisteta mittää
+		 
 
 	}
 
