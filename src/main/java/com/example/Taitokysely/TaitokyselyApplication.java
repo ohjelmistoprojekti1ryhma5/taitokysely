@@ -10,6 +10,7 @@ public class TaitokyselyApplication {
 		SpringApplication.run(TaitokyselyApplication.class, args);
 		
 		System.out.println("Hello world!");
+		System.out.println("Lauri");
 	}
 
 }
