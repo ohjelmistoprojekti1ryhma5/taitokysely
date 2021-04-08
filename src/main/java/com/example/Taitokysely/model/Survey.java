@@ -1,5 +1,6 @@
 package com.example.Taitokysely.model;
 
-public class kyselyobjekti {
+
+public class Survey {
 
 }
