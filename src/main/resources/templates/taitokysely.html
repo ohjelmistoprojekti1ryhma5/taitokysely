@@ -1,13 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-<title>Store</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>Taitokysely</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
-<h1>Hello World</h1>
+<h1>Taitokysely</h1>
 
+<form action="">
+<label>Piditkö tästä kyselystä?</label>
+<input type="radio" name="rad" id="Radio0" checked="checked" data-waschecked="true">Kyllä</input>
+
+</form>
 </body>
+<script>
+$(function(){
+    $('input[name="rad"]').click(function(){
+        var $radio = $(this);
+
+        // if this was previously checked
+        if ($radio.data('waschecked') == true)
+        {
+            $radio.prop('checked', false);
+            $radio.data('waschecked', false);
+        }
+        else
+            $radio.data('waschecked', true);
+
+        // remove was checked from other radios
+        $radio.siblings('input[name="rad"]').data('waschecked', false);
+    });
+});
+</script>
 </html>
