@@ -10,7 +10,6 @@ public class QuestionController {
 	@RequestMapping("/hello")
 	public String web() {
 		return "taitokysely";
-		
 	}
 }
 

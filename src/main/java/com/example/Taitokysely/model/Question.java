@@ -7,15 +7,15 @@ public class Question {
 	
 	// jösses
 	
-	public int questionId;
+	public Long questionId;
 	public String name;
 	
 	
 	
-	public int getQuestionId() {
+	public Long getQuestionId() {
 		return questionId;
 	}
-	public void setQuestionId(int questionId) {
+	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
 	}
 	public String getName() {
