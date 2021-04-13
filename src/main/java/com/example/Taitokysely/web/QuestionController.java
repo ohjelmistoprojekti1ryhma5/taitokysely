@@ -26,9 +26,7 @@ public class QuestionController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String answer(Answer answer) {
-		
-
-		
+	
 		if (answer.getName() == null) {
 			answer.setName("no");
 		}
