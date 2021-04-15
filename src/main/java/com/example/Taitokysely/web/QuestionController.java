@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.Taitokysely.model.Answer;
 import com.example.Taitokysely.model.AnswerRepository;
 
-@CrossOrigin(origins = "*", allowedHeaders ="*")
+
 @Controller
 public class QuestionController {
 
