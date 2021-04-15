@@ -12,32 +12,38 @@ public class Answer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long answerId;
-	private String name;
+	private String answerName;
 	
-	public Long getAnswerId() {
-		return answerId;
+	public Answer() {
+		
 	}
 	
-	public Answer(String name) {
+	public Answer(String answerName) {
 		super();
-		this.name = name;	
+		this.answerName = answerName;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
+	public Long getAnswerId() {
+		return answerId;
 	}
 	
 	public void setAnswerId(Long answerId) {
 		this.answerId = answerId;
 	}
+	
+	public String getAnswerName() {
+		return answerName;
+	}
+
+	public void setAnswerName(String answerName) {
+		this.answerName = answerName;
+	}
 
 	@Override
 	public String toString() {
-		return "Answer [answerId=" + answerId + ", name=" + name + "]";
+		return "Answer [answerId=" + answerId + ", answerName=" + answerName + "]";
 	}
+
+	
 	
 }

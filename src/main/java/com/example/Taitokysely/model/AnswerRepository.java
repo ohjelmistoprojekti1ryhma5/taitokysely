@@ -6,5 +6,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface AnswerRepository extends CrudRepository<Answer, Long> {
     
-    List<Answer> findByName(@Param("name") String name);
+    List<Answer> findByAnswerName(@Param("answerName") String answerName);
 } 
