@@ -38,6 +38,4 @@ public class Question {
 	public String toString() {
 		return "Question [questionId=" + questionId + ", name=" + name + "]";
 	}
-	
-	
 }
