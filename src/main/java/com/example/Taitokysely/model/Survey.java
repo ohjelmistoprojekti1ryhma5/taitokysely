@@ -71,6 +71,4 @@ public class Survey {
 		return answers;
 	}
 	
-	
-
 }
