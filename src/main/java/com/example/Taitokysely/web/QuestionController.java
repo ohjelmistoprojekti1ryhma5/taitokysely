@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.Taitokysely.model.Answer;
 import com.example.Taitokysely.model.AnswerRepository;
+import com.example.Taitokysely.model.QuestionRepository;
+import com.example.Taitokysely.model.Survey;
+import com.example.Taitokysely.model.SurveyRepository;
 
 
 @Controller
@@ -23,11 +26,22 @@ public class QuestionController {
 
 	@Autowired
 	private AnswerRepository arepository;
-
 	
+	@Autowired
+	private QuestionRepository qrepository;
+	
+	@Autowired
+	private SurveyRepository srepository;
+
+	// JSON MUOTO KAIKISTA VASTAUKSISTA
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public @ResponseBody List<Answer> answer() {	
 		return (List<Answer>) arepository.findAll();
+	}
+	
+	@RequestMapping(value = "/surveys", method = RequestMethod.GET)
+	public @ResponseBody List<Survey> survey() {	
+		return (List<Survey>) srepository.findAll();
 	}
 	
 	@RequestMapping("/taitokysely")

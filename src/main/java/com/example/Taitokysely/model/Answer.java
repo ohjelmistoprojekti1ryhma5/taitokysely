@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.swing.JRadioButton;
 
 @Entity
 public class Answer {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long answerId;
@@ -44,6 +44,4 @@ public class Answer {
 		return "Answer [answerId=" + answerId + ", answerName=" + answerName + "]";
 	}
 
-	
-	
 }

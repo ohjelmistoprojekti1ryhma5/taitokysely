@@ -11,20 +11,20 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long questionId;
-	private String name;
+	private String questionName;
 	
 	public Question() {	}
 	
-	public Question(String name) {
+	public Question(String questionName) {
 		super();
-		this.name = name;
+		this.questionName = questionName;
 	}
 
 	public String getName() {
-		return name;
+		return questionName;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.questionName = name;
 	}
 	
 	public Long getQuestionId() {
@@ -36,6 +36,6 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [questionId=" + questionId + ", name=" + name + "]";
+		return "Question [questionId=" + questionId + ", name=" + questionName + "]";
 	}
 }
