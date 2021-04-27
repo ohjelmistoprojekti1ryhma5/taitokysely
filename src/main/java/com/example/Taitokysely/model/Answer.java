@@ -14,9 +14,7 @@ public class Answer {
 	private Long answerId;
 	private String answerName;
 	
-	public Answer() {
-		
-	}
+	public Answer() { }
 	
 	public Answer(String answerName) {
 		super();

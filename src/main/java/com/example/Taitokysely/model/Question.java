@@ -20,13 +20,14 @@ public class Question {
 		this.questionName = questionName;
 	}
 
-	public String getName() {
+	public String getQuestionName() {
 		return questionName;
 	}
-	public void setName(String name) {
-		this.questionName = name;
+
+	public void setQuestionName(String questionName) {
+		this.questionName = questionName;
 	}
-	
+
 	public Long getQuestionId() {
 		return questionId;
 	}
