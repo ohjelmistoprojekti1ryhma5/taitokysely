@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Questions</title>
+</head>
+<body>
+<table>
+		
+		<tbody>
+			<tr th:each="question : ${question}">
+				<td th:text="${question.questionId}"></td>
+				<td th:text="${question.questionName}"></td>		
+				<td> <a th:href="@{/delete/{id}(id=${question.questionId})}" 
+				class="btn btn-xs btn-danger">Delete Question</a></td> 	
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

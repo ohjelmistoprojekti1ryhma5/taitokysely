@@ -23,14 +23,15 @@ public class Survey {
 	// PVM
 	private String surveyDate;
 
-	// EN TIIÄ TOIMIIKO VIELÄ, MUTTA IDEANA OLISI SAADA TÄHÄN MEIDÄN SURVEY LUOKKAAN
-	// TALTEEN KYSYMYKSEN JA VASTAUKSET LISTAMUODOSSA
-
-	// OLI ONGELMAA, ETTÄ TULI JOTAIN BEAN ONGELMIA MUTTA GOOGLAILUN JÄLKEEN TÄMÄ ELEMENT COLLECTION RATKAISI ONGELMAN
-	@ElementCollection
+	
+	//TÄHÄN JÄIN
+	
+	//@ElementCollection
+	@OneToMany
 	private List<Question> questions;
 
-	@ElementCollection
+	//@ElementCollection
+	@OneToMany
 	private List<Answer> answers;
 	
 	public Survey() {
@@ -55,6 +56,10 @@ public class Survey {
 		return surveyName;
 	}
 	
+	public void setSurveyName(String surveyName) {
+		this.surveyName = surveyName;
+	}
+	
 	public String getSurveyDate() {
 		return surveyDate;
 	}
@@ -63,12 +68,21 @@ public class Survey {
 		this.surveyDate = surveyDate;
 	}
 
-	public List<Question> getQuestion() {
+	public List<Question> getQuestions() {
 		return questions;
 	}
 
-	public List<Answer> getAnswer() {
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+	public List<Answer> getAnswers() {
 		return answers;
 	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
 	
 }

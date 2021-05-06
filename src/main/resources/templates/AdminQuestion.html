@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Taitokysely</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Luo uusi kysymys</h1>
+	<div>
+		<form th:object="${question}" th:action="@{save}" action="#" method="post">
+		  	<label for="question">Luo uusi kysymys</label>
+			<input type="text" id="questionName" th:field="*{questionName}" />
+			<input class="btn btn-success" type="submit" value="Save"></input>
+				
+			<input type="hidden" id="questionId" th:field="*{questionId}">
+		</form>
+		
+	</div>
+</body>
+</html>

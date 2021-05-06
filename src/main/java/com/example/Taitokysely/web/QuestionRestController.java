@@ -24,8 +24,9 @@ import com.example.Taitokysely.model.QuestionRepository;
 import com.example.Taitokysely.model.Survey;
 import com.example.Taitokysely.model.SurveyRepository;
 
+// NIMESTIN CONTROLLERIN UUDESTAAN
 @RestController
-public class QuestionController {
+public class QuestionRestController {
 
 	@Autowired
 	private AnswerRepository arepository;
@@ -69,6 +70,12 @@ public class QuestionController {
 	Question newQuestion(@RequestBody Question newQuestion) {
 		return qrepository.save(newQuestion);
 	}
+	
+	@PostMapping("/survey")
+	Survey newSurvey(@RequestBody Survey newSurvey) {
+		
+		return srepository.save(newSurvey);
+	}
 
 	// THYMELEAF HÖPINÄÄ, EI KANNATA KÄYTTÄÄ MEIDÄN REST JUTUISSA
 	/*
@@ -85,4 +92,4 @@ public class QuestionController {
 		return "vastaus";
 	} */
 
-}
+} 

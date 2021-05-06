@@ -26,9 +26,10 @@ public class TaitokyselyApplication {
 	public CommandLineRunner demo(AnswerRepository arepo, QuestionRepository qrepo, SurveyRepository srepo) {
 		return (args) -> {
 			
-			qrepo.deleteAll();
-			srepo.deleteAll();
-			
+			//arepo.deleteAll();
+			//qrepo.deleteAll();
+			//srepo.deleteAll();
+			//srepo.save(new Survey("kysely", "22.01.2021"));
 		};
 	}
 }
