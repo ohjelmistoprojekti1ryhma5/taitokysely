@@ -71,6 +71,7 @@ public class QuestionRestController {
 		return qrepository.save(newQuestion);
 	}
 	
+	// UUSI SURVEY TÄHÄN TÄIN
 	@PostMapping("/survey")
 	Survey newSurvey(@RequestBody Survey newSurvey) {
 		
