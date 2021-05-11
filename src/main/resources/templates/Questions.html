@@ -12,7 +12,9 @@ xmlns:th="http://www.thymeleaf.org">
 				<td th:text="${question.questionId}"></td>
 				<td th:text="${question.questionName}"></td>		
 				<td> <a th:href="@{/delete/{id}(id=${question.questionId})}" 
-				class="btn btn-xs btn-danger">Delete Question</a></td> 	
+				class="btn btn-xs btn-danger">Delete Question</a></td> 
+				<td><a class="btn btn-primary"
+					th:href="@{/edit/{id}(id=${question.questionId})}">Edit</a></td>	
 			</tr>
 		</tbody>
 	</table>

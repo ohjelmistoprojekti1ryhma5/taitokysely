@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Survey {
 
@@ -23,21 +25,23 @@ public class Survey {
 	// PVM
 	private String surveyDate;
 
-	
-	//TÄHÄN JÄIN
-	
-	//@ElementCollection
+	// TÄHÄN JÄIN
+
+	// @ElementCollection
+	@JsonIgnore
 	@OneToMany
 	private List<Question> questions;
 
-	//@ElementCollection
+	// @ElementCollection
+	@JsonIgnore
 	@OneToMany
 	private List<Answer> answers;
-	
-	public Survey() {
-    }
 
-	public Survey(String surveyName, String surveyDate, List<Question> questions, List<Answer> answers ) {
+	public Survey() {
+	}
+
+	public Survey(String surveyName, String surveyDate, List<Question> questions, List<Answer> answers) {
+		super();
 		this.surveyName = surveyName;
 		this.surveyDate = surveyDate;
 		this.questions = questions;
@@ -55,11 +59,11 @@ public class Survey {
 	public String getSurveyName() {
 		return surveyName;
 	}
-	
+
 	public void setSurveyName(String surveyName) {
 		this.surveyName = surveyName;
 	}
-	
+
 	public String getSurveyDate() {
 		return surveyDate;
 	}
@@ -82,6 +86,12 @@ public class Survey {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+
+	@Override
+	public String toString() {
+		return "Survey [surveyId=" + surveyId + ", surveyName=" + surveyName + ", surveyDate=" + surveyDate
+				+ ", questions=" + questions + ", answers=" + answers + "]";
 	}
 
 	

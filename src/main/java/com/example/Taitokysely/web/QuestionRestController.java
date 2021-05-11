@@ -1,11 +1,14 @@
 package com.example.Taitokysely.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JRadioButton;
 
 import org.apache.tomcat.util.buf.Asn1Writer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,6 +48,7 @@ public class QuestionRestController {
 
 	@GetMapping("/surveys")
 	public @ResponseBody List<Survey> allSurveys() {
+		
 		return (List<Survey>) srepository.findAll();
 	}
 	
@@ -71,12 +75,29 @@ public class QuestionRestController {
 		return qrepository.save(newQuestion);
 	}
 	
+	
 	// UUSI SURVEY TÄHÄN TÄIN
 	@PostMapping("/survey")
 	Survey newSurvey(@RequestBody Survey newSurvey) {
 		
+		//srepository.save(new Survey(qrepository.findAll(), srepository.findAll()));
+		
 		return srepository.save(newSurvey);
-	}
+	} 
+	
+	/*
+	@PostMapping("/survey")
+	public ResponseEntity<Survey> updateWithMultipleObjects(
+	        @RequestBody Survey newSurvey) {
+
+	    newSurvey.getAnswers().stream().forEach(c -> c.setAnswerName(c.getAnswerName()));
+	   // newSurvey.getQuestions().stream();
+	            
+
+	    // TODO: call persistence layer to update
+
+	    return new ResponseEntity<Survey>(newSurvey, HttpStatus.OK);
+	} */
 
 	// THYMELEAF HÖPINÄÄ, EI KANNATA KÄYTTÄÄ MEIDÄN REST JUTUISSA
 	/*

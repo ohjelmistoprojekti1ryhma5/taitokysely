@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface AnswerRepository extends CrudRepository<Answer, Long> {
     
     List<Answer> findByAnswerName(@Param("answerName") String answerName);
+    
 } 
