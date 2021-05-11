@@ -12,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/*
+ * Survey-luokka ei vielä käytössä
+ * 
+ * 
 @Entity
 public class Survey {
 
@@ -86,3 +90,4 @@ public class Survey {
 
 	
 }
+*/

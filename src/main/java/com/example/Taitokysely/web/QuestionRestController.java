@@ -21,8 +21,8 @@ import com.example.Taitokysely.model.Answer;
 import com.example.Taitokysely.model.AnswerRepository;
 import com.example.Taitokysely.model.Question;
 import com.example.Taitokysely.model.QuestionRepository;
-import com.example.Taitokysely.model.Survey;
-import com.example.Taitokysely.model.SurveyRepository;
+// import com.example.Taitokysely.model.Survey;
+// import com.example.Taitokysely.model.SurveyRepository;
 
 // NIMESTIN CONTROLLERIN UUDESTAAN
 @RestController
@@ -35,7 +35,7 @@ public class QuestionRestController {
 	private QuestionRepository qrepository;
 
 	@Autowired
-	private SurveyRepository srepository;
+//	private SurveyRepository srepository;
 
 	// LISTA KAIKISTA
 	@GetMapping("/answers")
@@ -43,10 +43,13 @@ public class QuestionRestController {
 		return (List<Answer>) arepository.findAll();
 	}
 
+	/*
+	 * Survey ei vielä käytössä
 	@GetMapping("/surveys")
 	public @ResponseBody List<Survey> allSurveys() {
 		return (List<Survey>) srepository.findAll();
 	}
+	*/
 	
 	@GetMapping("/questions")
 	public @ResponseBody List<Question> allQuestions() {
@@ -71,12 +74,15 @@ public class QuestionRestController {
 		return qrepository.save(newQuestion);
 	}
 	
+	/*
+	 * Survey ei vielä käytössä
 	// UUSI SURVEY TÄHÄN TÄIN
 	@PostMapping("/survey")
 	Survey newSurvey(@RequestBody Survey newSurvey) {
 		
 		return srepository.save(newSurvey);
 	}
+	 */
 
 	// THYMELEAF HÖPINÄÄ, EI KANNATA KÄYTTÄÄ MEIDÄN REST JUTUISSA
 	/*
