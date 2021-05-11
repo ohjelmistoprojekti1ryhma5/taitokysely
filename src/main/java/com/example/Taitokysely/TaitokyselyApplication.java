@@ -11,9 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.example.Taitokysely.model.Answer;
 import com.example.Taitokysely.model.AnswerRepository;
 import com.example.Taitokysely.model.Question;
-import com.example.Taitokysely.model.Survey;
+// import com.example.Taitokysely.model.Survey;
 import com.example.Taitokysely.model.QuestionRepository;
-import com.example.Taitokysely.model.SurveyRepository;
+// import com.example.Taitokysely.model.SurveyRepository;
 
 @SpringBootApplication
 public class TaitokyselyApplication {
@@ -23,7 +23,7 @@ public class TaitokyselyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(AnswerRepository arepo, QuestionRepository qrepo, SurveyRepository srepo) {
+	public CommandLineRunner demo(AnswerRepository arepo, QuestionRepository qrepo) {
 		return (args) -> {
 			
 			//arepo.deleteAll();

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.Taitokysely.model.AnswerRepository;
 import com.example.Taitokysely.model.Question;
 import com.example.Taitokysely.model.QuestionRepository;
-import com.example.Taitokysely.model.SurveyRepository;
+// import com.example.Taitokysely.model.SurveyRepository;
 
 // ADMININ CONTROLLERI LISAAMAAN KYSYMYKSIA
 @Controller
@@ -21,10 +21,12 @@ public class AdminController {
 
 	@Autowired
 	private QuestionRepository qrepository;
-
-	@Autowired
-	private SurveyRepository srepository;
-
+	/*
+	 * Toistaiseksi ei käytössä surveyrepositoryä
+	 * @Autowired
+	 * private SurveyRepository srepository;
+	*/
+	
 	@RequestMapping("/AdminQuestion")
 	public String web() {
 		return "AdminQuestion";
