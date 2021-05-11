@@ -28,7 +28,7 @@ public class TaitokyselyApplication {
 			
 			//arepo.deleteAll();
 			//qrepo.deleteAll();
-			srepo.deleteAll();
+			//srepo.deleteAll();
 			//srepo.save(new Survey("Survey", "22.01.2021"));
 		};
 	}
