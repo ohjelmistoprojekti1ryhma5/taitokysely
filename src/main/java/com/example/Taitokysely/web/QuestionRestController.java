@@ -27,27 +27,12 @@ import com.example.Taitokysely.model.SurveyRepository;
 @RestController
 public class QuestionRestController {
 
-	/* 
-	 * Vastaus-repository 
-	 * Vastaus-luokka (Answer) 
-	 * 
-	 * */
 	@Autowired
 	private AnswerRepository arepository;
 
-	/*
-	 * Question-repository 
-	 * 
-	 * */
 	@Autowired
 	private QuestionRepository qrepository;
 
-	/*
-	 * Survey-repository
-	 * Kaikki kyselyt 
-	 * Kyselyt linkitetty 
-	 * 
-	 * */
 	@Autowired
 	private SurveyRepository srepository;
 
@@ -56,6 +41,10 @@ public class QuestionRestController {
 	 * 1. Hae vastaukset 
 	 * 2. Lisää vastaus
 	 * 3. Lisää vastaukset
+	 * 
+	 * Erityisesti 3. Lisää vastaukset -metodi on nyt oleellinen, 
+	 * sillä voi lisätä kaikki kyselyn (Survey) vastaukset kerralla
+	 * ja generoida niille ID:t 
 	 * 
 	 * */
 	
@@ -71,7 +60,7 @@ public class QuestionRestController {
 		return arepository.save(newAnswer);
 	}
 	
-	// 3. Lisää vastaukset
+	// 3. Lisää vastaukset 
 	@PostMapping("/answers")
 	List<Answer> answerList(@RequestBody List<Answer> answerList) {
 		return (List<Answer>) arepository.saveAll(answerList);
@@ -84,6 +73,12 @@ public class QuestionRestController {
 	 * Kysymyksiin (Question-luokka) liittyvät metodit
 	 * 1. Hae kysymykset
 	 * 2. Lisää kysymys
+	 * 
+	 * Erityisesti 2. Lisää kysymys on nyt oleellinen,
+	 * kysymyksiä pitää lisätä että voi luoda kyselyn ja
+	 * vastata kysymyksiin, 
+	 * koska vastaukset on linkitetty kysymyksiin
+	 * 
 	 * 
 	 * */
 
@@ -107,6 +102,10 @@ public class QuestionRestController {
 	 * 1. Hae kyselyt
 	 * 2. Lisää kysely 
 	 * 
+	 * Kysymysten lisäämisen jälkeen, 
+	 * lisää kysely 2. Lisää kysely-metodilla
+	 * ja anna kyselylle lista kysymyksiä
+	 * 
 	 * */
 	
 	// 1. Hae kyselyt
@@ -127,9 +126,10 @@ public class QuestionRestController {
 	 * !!! Huomio Babies !!! Boomer kommentoi 12.5.2021
 	 * 
 	 * Seuraavaksi tänne pitäisi varmaankin rakentaa joku Get joka hakee 
-	 * Tietyn kyselyn (Survey [ID]) kaikki vastaukset
+	 * Tietyn kyselyn (Survey [ID]) kaikki kysymykset
+	 * ja seuraavaksi sen jälkeen kaikki vastaukset kyselyyn 
 	 * 
-	 * Tieto on jo olemassa, mutta kuinka se toteutetaan 
+	 * Tieto on nyt olemassa, mutta kuinka se haetaan 
 	 * en osaa nyt miettiä tähän aikaan illasta enää
 	 * 
 	 * ??? ??? ??? ??? ???
