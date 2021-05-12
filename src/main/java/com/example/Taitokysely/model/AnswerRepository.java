@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnswerRepository extends CrudRepository<Answer, Long> {
-    
+	List<Answer> findByAnswerId(@Param("answerId") Long answerId);
     List<Answer> findByAnswerName(@Param("answerName") String answerName);
 } 

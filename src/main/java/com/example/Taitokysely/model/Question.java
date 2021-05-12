@@ -10,10 +10,19 @@ public class Question {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long questionId;
-	private String questionName;
+	protected Long questionId;
+	protected String questionName;
 	
-	public Question() {	}
+	/*
+	 * HUOM! 
+	 * Kyselyitä luodessasi luo ensin kysymykset, 
+	 * koska vastaus (Answer) ja kysely (Survey) -luokat 
+	 * tarvitsevat jo luotuja ID:llisiä kysymyksiä (todennäköisesti)
+	 * 
+	 * Kysymykset luodaan QuestionRestControllerin metodissa newQuestion
+	 * 
+	 * */
+	public Question() {}
 	
 	public Question(String questionName) {
 		super();
