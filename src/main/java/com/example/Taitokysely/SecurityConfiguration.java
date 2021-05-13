@@ -1,5 +1,5 @@
 package com.example.Taitokysely;
-
+/*
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * Ainoa käytetty kohta otettu "Part 5" alakohdasta "Wiring up Your Security Policy" 
  * 
  * */
-
+/*
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) 
@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				 * .permitAll()
 				 * .and() 
 				 * */
-			.httpBasic()
+			/*.httpBasic()
 				.and()
 				// CSRF vaatii vielä hahmottamista, disablointi vain kehitysversioissa suositus
 			.csrf().disable()
@@ -49,4 +49,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/");
 	}
 
-}
+} */
