@@ -55,10 +55,17 @@ public class AdminController {
 	}
 	
 	// POISTAA KYSMYKSEN
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteQuestion(@PathVariable("id") Long questionId, Model model) {
-		qrepository.deleteById(questionId);
-		return "redirect:../Questions";
-	}
+		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+		public String deleteQuestion(@PathVariable("id") Long questionId, Model model) {
+			qrepository.deleteById(questionId);
+			return "redirect:../questionlist";
+		}
+
+		// MUOKKAA KYSYMYSTÄ
+		@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+		public String editQuestion(@PathVariable("id") Long QuestionId, Model model) {
+			model.addAttribute("question", qrepository.findById(QuestionId));
+			return "EditQuestion";
+		}
 
 }
