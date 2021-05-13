@@ -21,10 +21,9 @@ import com.example.Taitokysely.model.Answer;
 import com.example.Taitokysely.model.AnswerRepository;
 import com.example.Taitokysely.model.Question;
 import com.example.Taitokysely.model.QuestionRepository;
-// import com.example.Taitokysely.model.Survey;
-// import com.example.Taitokysely.model.SurveyRepository;
+import com.example.Taitokysely.model.Survey;
+import com.example.Taitokysely.model.SurveyRepository;
 
-// NIMESTIN CONTROLLERIN UUDESTAAN
 @RestController
 public class QuestionRestController {
 
@@ -35,68 +34,165 @@ public class QuestionRestController {
 	private QuestionRepository qrepository;
 
 	@Autowired
-//	private SurveyRepository srepository;
+	private SurveyRepository srepository;
 
-	// LISTA KAIKISTA
+	/*
+	 * Vastauksiin (Answer-luokka) liittyvät metodit
+	 * 1. Hae vastaukset 
+	 * 2. Lisää vastaus
+	 * 3. Lisää vastaukset
+	 * 
+	 * Erityisesti 3. Lisää vastaukset -metodi on nyt oleellinen, 
+	 * sillä voi lisätä kaikki kyselyn (Survey) vastaukset kerralla
+	 * ja generoida niille ID:t 
+	 * 
+	 * */
+	
+	// 1. Hae vastaukset
 	@GetMapping("/answers")
 	public @ResponseBody List<Answer> allAnswers() {
 		return (List<Answer>) arepository.findAll();
 	}
-
-	/*
-	 * Survey ei vielä käytössä
-	@GetMapping("/surveys")
-	public @ResponseBody List<Survey> allSurveys() {
-		return (List<Survey>) srepository.findAll();
-	}
-	*/
 	
-	@GetMapping("/questions")
-	public @ResponseBody List<Question> allQuestions() {
-		return (List<Question>) qrepository.findAll();
-	}
-
-	/*
-	@RequestMapping("/taitokysely")
-	public String web() {
-		return "taitokysely";
-	}*/
-
-	// RESTIN KAUTTA UUS VASTAUS
+	// 2. Lisää vastaus
 	@PostMapping("/answer")
 	Answer newAnswer(@RequestBody Answer newAnswer) {
 		return arepository.save(newAnswer);
 	}
+	
+	// 3. Lisää vastaukset 
+	@PostMapping("/answers")
+	List<Answer> answerList(@RequestBody List<Answer> answerList) {
+		return (List<Answer>) arepository.saveAll(answerList);
+	}
+	
+	/*
+	 * Vastaus-metodit päättyy
+	 * 
+	 * 
+	 * Kysymyksiin (Question-luokka) liittyvät metodit
+	 * 1. Hae kysymykset
+	 * 2. Lisää kysymys
+	 * 
+	 * Erityisesti 2. Lisää kysymys on nyt oleellinen,
+	 * kysymyksiä pitää lisätä että voi luoda kyselyn ja
+	 * vastata kysymyksiin, 
+	 * koska vastaukset on linkitetty kysymyksiin
+	 * 
+	 * 
+	 * */
 
-	// RESTIN KAUTTA UUS KYSYMYS
+	// 1. Hae kysymykset
+	@GetMapping("/questions")
+	public @ResponseBody List<Question> allQuestions() {
+		return (List<Question>) qrepository.findAll();
+	}
+	
+	// 2. Lisää kysymys
 	@PostMapping("/question")
 	Question newQuestion(@RequestBody Question newQuestion) {
 		return qrepository.save(newQuestion);
 	}
 	
 	/*
-	 * Survey ei vielä käytössä
-	// UUSI SURVEY TÄHÄN TÄIN
+	 * Kysymys-metodit päättyy
+	 * 
+	 * 
+	 * Kyselyyn (Survey-luokka) liittyvät metodit
+	 * 1. Hae kyselyt
+	 * 2. Lisää kysely 
+	 * 
+	 * Kysymysten lisäämisen jälkeen, 
+	 * lisää kysely 2. Lisää kysely-metodilla
+	 * ja anna kyselylle lista kysymyksiä
+	 * 
+	 * */
+	
+	// 1. Hae kyselyt
+	@GetMapping("/surveys")
+	public @ResponseBody List<Survey> allSurveys() {
+		return (List<Survey>) srepository.findAll();
+	}
+	
+	// 2. Lisää kysely
 	@PostMapping("/survey")
 	Survey newSurvey(@RequestBody Survey newSurvey) {
-		
 		return srepository.save(newSurvey);
 	}
-	 */
-
-	// THYMELEAF HÖPINÄÄ, EI KANNATA KÄYTTÄÄ MEIDÄN REST JUTUISSA
-	/*
-	 * @PostMapping(value = "/save") public String answer(Answer answer) {
-	 * 
-	 * if (answer.getAnswerName() == null) { answer.setAnswerName("no"); }
-	 * arepository.save(answer); System.out.println(answer.getAnswerName());
-	 * System.out.println(answer.getAnswerId()); System.out.println(answer); return
-	 * "redirect:vastaus"; }
-	 
 	
-	@RequestMapping("/vastaus")
-	public String web2() {
-		return "vastaus";
-	} */
-
+	/*
+	 * ??? ??? ??? ??? ??? 
+	 *  
+	 * !!! Huomio Babies !!! Boomer kommentoi 12.5.2021
+	 * 
+	 * Seuraavaksi tänne pitäisi varmaankin rakentaa joku Get joka hakee 
+	 * Tietyn kyselyn (Survey [ID]) kaikki kysymykset
+	 * ja seuraavaksi sen jälkeen kaikki vastaukset kyselyyn 
+	 * 
+	 * Tieto on nyt olemassa, mutta kuinka se haetaan 
+	 * en osaa nyt miettiä tähän aikaan illasta enää
+	 * 
+	 * ??? ??? ??? ??? ???
+	 * 
+	 * */
 } 
+
+
+/***********************
+ * 
+ * CODE GRAVEYARD RIP
+ * 
+ ***********************/
+
+
+/* palauttaa kaikki kyselyt ei vastauksia 
+@GetMapping("/surveyanswers")
+public @ResponseBody List<Survey> allSurveyAnswers() {
+	return (List<Survey>) srepository.findAll();
+}
+*/
+
+/* Survey-luokka muuttunut, enää ei haeta käyttäjältä kasaa vastauksia tätä kautta
+@PostMapping("/survey")
+Survey newAnswerToSurvey(@RequestBody Survey newAnswerToSurvey) {
+	return srepository.save(newAnswerToSurvey);
+}*/
+
+/*
+@RequestMapping("/taitokysely")
+public String web() {
+	return "taitokysely";
+}*/
+
+/*
+ * Survey ei vielä käytössä
+@GetMapping("/surveys")
+public @ResponseBody List<Survey> allSurveys() {
+	return (List<Survey>) srepository.findAll();
+}
+*/
+
+/*
+ * Survey ei vielä käytössä
+// UUSI SURVEY TÄHÄN TÄIN
+@PostMapping("/survey")
+Survey newSurvey(@RequestBody Survey newSurvey) {
+	
+	return srepository.save(newSurvey);
+}
+ */
+
+// THYMELEAF HÖPINÄÄ, EI KANNATA KÄYTTÄÄ MEIDÄN REST JUTUISSA
+/*
+ * @PostMapping(value = "/save") public String answer(Answer answer) {
+ * 
+ * if (answer.getAnswerName() == null) { answer.setAnswerName("no"); }
+ * arepository.save(answer); System.out.println(answer.getAnswerName());
+ * System.out.println(answer.getAnswerId()); System.out.println(answer); return
+ * "redirect:vastaus"; }
+ 
+
+@RequestMapping("/vastaus")
+public String web2() {
+	return "vastaus";
+} */
