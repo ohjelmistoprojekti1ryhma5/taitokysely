@@ -25,11 +25,11 @@ public class Answer {
 	private Question question;
 	
 	public Answer() {}
-	
+	/*
 	public Answer(String answerName) {
 		super();
 		this.answerName = answerName;
-	}
+	} */
 	
 	public Answer(String answerName, Question question) {
 		super();
