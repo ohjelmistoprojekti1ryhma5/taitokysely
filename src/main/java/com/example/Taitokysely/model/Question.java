@@ -1,9 +1,12 @@
 package com.example.Taitokysely.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Question {
@@ -13,6 +16,8 @@ public class Question {
 	protected Long questionId;
 	protected String questionName;
 	
+	@OneToMany
+	private List<Answer> answers;
 	/*
 	 * HUOM! 
 	 * Kyselyitä luodessasi luo ensin kysymykset, 
@@ -42,6 +47,14 @@ public class Question {
 	}
 	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.example.Taitokysely.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JRadioButton;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +65,11 @@ public class QuestionRestController {
 	// 3. Lisää vastaukset 
 	@PostMapping("/answers")
 	List<Answer> answerList(@RequestBody List<Answer> answerList) {
+		List<Answer> vastauslista = (List<Answer>) arepository.saveAll(answerList);
+		
 		return (List<Answer>) arepository.saveAll(answerList);
+		
+		//return (List<Answer>) arepository.saveAll(answerList);
 	}
 	
 	/*
@@ -101,6 +107,8 @@ public class QuestionRestController {
 	 * Kyselyyn (Survey-luokka) liittyvät metodit
 	 * 1. Hae kyselyt
 	 * 2. Lisää kysely 
+	 * 3. Hae kyselyyn liittyvät kysymykset ?? Miten front saa oikeat kysymykset
+	 * 4. Hae kyselyyn liittyvät vastaukset
 	 * 
 	 * Kysymysten lisäämisen jälkeen, 
 	 * lisää kysely 2. Lisää kysely-metodilla
@@ -118,6 +126,23 @@ public class QuestionRestController {
 	@PostMapping("/survey")
 	Survey newSurvey(@RequestBody Survey newSurvey) {
 		return srepository.save(newSurvey);
+	}
+	
+	// 3. Hae kyselyyn liittyvät kysymykset
+	@GetMapping("/survey/{id}")
+	public List<Question> getQuestions(@PathVariable("id") Long SurveyId) {
+		return srepository.findById(SurveyId).get().getQuestions();
+	}
+	
+	// 4. Hae kyselyyn liittyvät vastaukset 
+	@GetMapping("/answers/{id}")
+	public List<Answer> getAnswers(@PathVariable("id") Long SurveyId) {
+		List<Question> kys = srepository.findById(SurveyId).get().getQuestions();
+		List<Answer> answers = new ArrayList<>();
+		for (Question kysmys : kys) {
+			answers.addAll(kysmys.getAnswers());
+		}
+ 		return answers;
 	}
 	
 	/*
