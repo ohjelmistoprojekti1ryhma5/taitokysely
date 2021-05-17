@@ -66,10 +66,7 @@ public class QuestionRestController {
 	@PostMapping("/answers")
 	List<Answer> answerList(@RequestBody List<Answer> answerList) {
 		List<Answer> vastauslista = (List<Answer>) arepository.saveAll(answerList);
-		
 		return (List<Answer>) arepository.saveAll(answerList);
-		
-		//return (List<Answer>) arepository.saveAll(answerList);
 	}
 	
 	/*
@@ -107,7 +104,7 @@ public class QuestionRestController {
 	 * Kyselyyn (Survey-luokka) liittyvät metodit
 	 * 1. Hae kyselyt
 	 * 2. Lisää kysely 
-	 * 3. Hae kyselyyn liittyvät kysymykset ?? Miten front saa oikeat kysymykset
+	 * 3. Hae kyselyyn liittyvät kysymykset 
 	 * 4. Hae kyselyyn liittyvät vastaukset
 	 * 
 	 * Kysymysten lisäämisen jälkeen, 
@@ -135,6 +132,8 @@ public class QuestionRestController {
 	}
 	
 	// 4. Hae kyselyyn liittyvät vastaukset 
+	/* HUOM! RIKKI TOISTAISEKSI! 
+	 * 
 	@GetMapping("/answers/{id}")
 	public List<Answer> getAnswers(@PathVariable("id") Long SurveyId) {
 		List<Question> kys = srepository.findById(SurveyId).get().getQuestions();
@@ -144,6 +143,7 @@ public class QuestionRestController {
 		}
  		return answers;
 	}
+	*/
 	
 	/*
 	 * ??? ??? ??? ??? ??? 
