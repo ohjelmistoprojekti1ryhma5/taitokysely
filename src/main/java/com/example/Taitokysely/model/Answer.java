@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Answer {
 
@@ -21,6 +23,8 @@ public class Answer {
 	 * Yhdellä kysymyksellä voi olla monta vastausta (@ManyToOne)
 	 * 
 	 * */
+	
+	@JsonIgnore
 	@ManyToOne
 	private Question question;
 	

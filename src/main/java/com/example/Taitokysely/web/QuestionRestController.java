@@ -132,34 +132,15 @@ public class QuestionRestController {
 	}
 	
 	// 4. Hae kyselyyn liittyvät vastaukset 
-	/* HUOM! RIKKI TOISTAISEKSI! 
-	 * 
 	@GetMapping("/answers/{id}")
 	public List<Answer> getAnswers(@PathVariable("id") Long SurveyId) {
-		List<Question> kys = srepository.findById(SurveyId).get().getQuestions();
 		List<Answer> answers = new ArrayList<>();
-		for (Question kysmys : kys) {
+		for (Question kysmys : srepository.findById(SurveyId).get().getQuestions()) {
 			answers.addAll(kysmys.getAnswers());
 		}
  		return answers;
 	}
-	*/
-	
-	/*
-	 * ??? ??? ??? ??? ??? 
-	 *  
-	 * !!! Huomio Babies !!! Boomer kommentoi 12.5.2021
-	 * 
-	 * Seuraavaksi tänne pitäisi varmaankin rakentaa joku Get joka hakee 
-	 * Tietyn kyselyn (Survey [ID]) kaikki kysymykset
-	 * ja seuraavaksi sen jälkeen kaikki vastaukset kyselyyn 
-	 * 
-	 * Tieto on nyt olemassa, mutta kuinka se haetaan 
-	 * en osaa nyt miettiä tähän aikaan illasta enää
-	 * 
-	 * ??? ??? ??? ??? ???
-	 * 
-	 * */
+
 } 
 
 
