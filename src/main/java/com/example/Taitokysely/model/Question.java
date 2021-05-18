@@ -2,6 +2,7 @@ package com.example.Taitokysely.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Question {
 	protected Long questionId;
 	protected String questionName;
 	
-	@OneToMany
+	@OneToMany //(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
 	/*
 	 * HUOM! 
@@ -49,6 +50,7 @@ public class Question {
 		this.questionId = questionId;
 	}
 
+	
 	public List<Answer> getAnswers() {
 		return answers;
 	}
@@ -56,7 +58,8 @@ public class Question {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", name=" + questionName + "]";

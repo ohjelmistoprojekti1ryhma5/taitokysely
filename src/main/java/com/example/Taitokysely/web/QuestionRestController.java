@@ -130,16 +130,66 @@ public class QuestionRestController {
 	public List<Question> getQuestions(@PathVariable("id") Long SurveyId) {
 		return srepository.findById(SurveyId).get().getQuestions();
 	}
+	// 4. Hae kyselyyn liittyvät vastaukset 
+	@GetMapping("/sanswers/{id}")
+	public List<Answer> getAnswers(@PathVariable("id") Long SurveyId) {
+		List<Question> kysymyslista = srepository.findById(SurveyId).get().getQuestions();
+		List<Answer> answers = new ArrayList<>();
+		for (Question kysymys : kysymyslista) {
+			List<Answer> listOfAnswers = kysymys.getAnswers();
+			for (Answer answer : listOfAnswers) {
+				answers.add(answer);
+			}
+			//answers.add(kysymys.);
+		}
+		return answers;
+		//return srepository.findById(SurveyId).get().getQuestions();
+	}
+	/*
+	 * @RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
+	public ResponseEntity<List<Answer>> getQuery(Model model, @PathVariable Long id) {
+		List<Question> questionList = queryRepository.findById(id).get().getQuestions();
+
+		List<Answer> answerList = new ArrayList<>();
+
+		for (Question question : questionList) {
+			List<Answer> listOfAnswers = question.getAnswers();
+			for (Answer answer : listOfAnswers) {
+				answerList.add(answer);
+			}
+		}
+		return ResponseEntity.ok().body(answerList);
+	}
+	 * 
+	 * */
+	
+	/*
+	 * 39	
+		answerId	45
+		answerName	"Pitkiähän ne on"
+		question	
+		questionId	1
+		questionName	"Kuinka pitkä kyy on?"
+		answers	[]
+		40	
+		answerId	46
+		answerName	"Kylmässä "
+		question	
+		questionId	2
+		questionName	"Missä kyyt asuvat?"
+		answers	[]
+	 * */
 	
 	// 4. Hae kyselyyn liittyvät vastaukset 
-	/* HUOM! RIKKI TOISTAISEKSI! 
-	 * 
+	// List<ArrayList<String>> listOfLists = new ArrayList<ArrayList<String>>(); 
+	
+	/*
 	@GetMapping("/answers/{id}")
-	public List<Answer> getAnswers(@PathVariable("id") Long SurveyId) {
+	public List<List<Answer>> getAnswers(@PathVariable("id") Long SurveyId) {
 		List<Question> kys = srepository.findById(SurveyId).get().getQuestions();
-		List<Answer> answers = new ArrayList<>();
+		List<List<Answer>> answers = new ArrayList<>();
 		for (Question kysmys : kys) {
-			answers.addAll(kysmys.getAnswers());
+			answers.add(kysmys.getAnswers());
 		}
  		return answers;
 	}

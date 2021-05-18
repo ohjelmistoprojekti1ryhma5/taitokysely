@@ -32,10 +32,6 @@ public class Survey {
 	public Survey(String surveyName) {
 		this.surveyName = surveyName;
 	}
-	
-	public Survey(String surveyName, List<Answer> answers ) {
-		this.surveyName = surveyName;
-	}
 
 	public Long getSurveyId() {
 		return surveyId;
